@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useTasks } from '../hooks/useTasks';
@@ -25,8 +25,9 @@ export const Dashboard = () => {
   const navigate = useNavigate();
   const { success, error } = useToast();
 
-  const handleSuccess = (msg) => success(msg);
-  const handleError = (msg) => error(msg);
+  // useCallback keeps these stable so useTasks never re-fetches unnecessarily
+  const handleSuccess = useCallback((msg) => success(msg), [success]);
+  const handleError   = useCallback((msg) => error(msg),   [error]);
 
   const {
     tasks,
