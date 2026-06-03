@@ -12,7 +12,6 @@ import {
   LogOut,
   User,
   LayoutDashboard,
-  Briefcase,
   X,
 } from 'lucide-react';
 
@@ -101,17 +100,6 @@ export const Sidebar = ({ currentFilter, setFilter, isOpen, setIsOpen, stats, hi
           >
             <User className={`w-4 h-4 ${location.pathname === '/profile' ? 'text-violet-400' : ''}`} />
             My Profile
-          </button>
-
-          {/* Portfolio link */}
-          <button
-            onClick={() => { navigate('/portfolio'); setIsOpen(false); }}
-            className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
-              location.pathname === '/portfolio' ? 'bg-slate-800/80 text-white' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-            }`}
-          >
-            <Briefcase className={`w-4 h-4 ${location.pathname === '/portfolio' ? 'text-violet-400' : ''}`} />
-            Our Work
           </button>
 
           {/* ── Filters (only visible on Dashboard) ── */}
